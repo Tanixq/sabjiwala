@@ -29,7 +29,7 @@ const orderController = () => {
           amount: razorpayOrderId.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
           currency: "INR",
           order_id: razorpayOrderId.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-          callback_url: "http://localhost:3000/orders/payment-capture",
+          callback_url: process.env.RAZORPAY_CALLBACK_URL,
         };
         await order.save();
         res.json(options);
